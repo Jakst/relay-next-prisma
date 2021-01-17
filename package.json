@@ -22,8 +22,11 @@
     "relay-hooks": "3.5.2"
   },
   "devDependencies": {
+    "@types/node": "^14.14.21",
+    "@types/react-relay": "^7.0.17",
     "babel-plugin-relay": "^9.0.0",
     "graphql-cli": "^3.0.11",
-    "relay-compiler": "^9.0.0"
+    "relay-compiler": "^9.0.0",
+    "typescript": "^4.1.3"
   }
 }
