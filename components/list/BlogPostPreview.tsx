@@ -9,7 +9,7 @@ interface Props {
 const BlogPostPreview = ({ post }: Props) => {
   return (
     <div>
-      <Link href={`/${post.id}`}>{post.title}</Link>
+      <Link href={`/posts/${post.id}`}>{post.title}</Link>
     </div>
   );
 };

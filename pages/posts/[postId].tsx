@@ -1,9 +1,9 @@
 import { graphql, fetchQuery } from "react-relay";
 import { useQuery } from "relay-hooks";
-import { initEnvironment } from "../lib/createEnvironment";
+import { initEnvironment } from "../../lib/createEnvironment";
 import { GetServerSideProps } from "next";
-import { PostIdQuery } from "../__generated__/PostIdQuery.graphql";
-import Details from "../components/details/Details";
+import { PostIdQuery } from "../../__generated__/PostIdQuery.graphql";
+import Details from "../../components/details/Details";
 
 const query = graphql`
   query PostIdQuery($postId: String!) {
