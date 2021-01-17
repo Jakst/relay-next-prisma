@@ -1,32 +1,34 @@
 import { graphql, fetchQuery } from "react-relay";
 import { useQuery } from "relay-hooks";
 import { initEnvironment } from "../lib/createEnvironment";
-import BlogPosts from "../components/list/BlogPosts";
 import { GetServerSideProps } from "next";
-import { pages_indexQuery } from "../__generated__/pages_indexQuery.graphql";
+import { PostIdQuery } from "../__generated__/PostIdQuery.graphql";
+import Details from "../components/details/Details";
 
 const query = graphql`
-  query pages_indexQuery {
+  query PostIdQuery($postId: String!) {
     viewer {
-      ...BlogPosts_viewer
+      ...Details_viewer @arguments(postId: $postId)
     }
   }
 `;
 
-const Index = () => {
-  const { error, data } = useQuery<pages_indexQuery>(query);
+const Index = ({ postId }) => {
+  const { error, data } = useQuery<PostIdQuery>(query, { postId });
 
   if (error) return <div>{error.message}</div>;
-
   if (!data) return <div>Loading</div>;
 
-  return <BlogPosts viewer={data.viewer} />;
+  return <Details viewer={data.viewer} />;
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<
+  any,
+  { postId: string }
+> = async ({ params }) => {
   const { environment, relaySSR } = initEnvironment();
 
-  await fetchQuery(environment, query, {});
+  await fetchQuery(environment, query, { postId: params.postId });
 
   const relayData = (await relaySSR.getCache())?.[0];
 
@@ -34,6 +36,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       // @ts-expect-error QueryPayload is a union type of which only one type contains .json
       relayData: !relayData ? null : [[relayData[0], relayData[1].json]],
+      postId: params.postId,
     },
   };
 };

@@ -1,5 +1,5 @@
 import { createFragmentContainer, graphql } from "react-relay";
-import { BlogPosts_viewer } from "../__generated__/BlogPosts_viewer.graphql";
+import { BlogPosts_viewer } from "../../__generated__/BlogPosts_viewer.graphql";
 import BlogPostPreview from "./BlogPostPreview";
 
 interface Props {
