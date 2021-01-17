@@ -5,32 +5,31 @@ import {
 } from "react-relay-network-modern/node8";
 import RelaySSR from "react-relay-network-modern-ssr/node8/client";
 import { Environment, RecordSource, Store } from "relay-runtime";
+import { SSRCache } from "react-relay-network-modern-ssr/node8/server";
 
 const source = new RecordSource();
 const store = new Store(source);
 
-let storeEnvironment = null;
+let storeEnvironment: Environment | null = null;
 
-export default {
-  createEnvironment: (relayData) => {
-    if (storeEnvironment) return storeEnvironment;
+export function createEnvironment(relayData: SSRCache): Environment {
+  if (storeEnvironment) return storeEnvironment;
 
-    storeEnvironment = new Environment({
-      store,
-      network: new RelayNetworkLayer([
-        cacheMiddleware({
-          size: 100,
-          ttl: 60 * 1000,
-        }),
-        new RelaySSR(relayData).getMiddleware({
-          lookup: false,
-        }),
-        urlMiddleware({
-          url: (req) => process.env.NEXT_PUBLIC_RELAY_ENDPOINT,
-        }),
-      ]),
-    });
+  storeEnvironment = new Environment({
+    store,
+    network: new RelayNetworkLayer([
+      cacheMiddleware({
+        size: 100,
+        ttl: 60 * 1000,
+      }),
+      new RelaySSR(relayData).getMiddleware({
+        lookup: false,
+      }),
+      urlMiddleware({
+        url: (req) => process.env.NEXT_PUBLIC_RELAY_ENDPOINT,
+      }),
+    ]),
+  });
 
-    return storeEnvironment;
-  },
-};
+  return storeEnvironment;
+}

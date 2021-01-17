@@ -653,7 +653,7 @@
     "@types/prop-types" "*"
     csstype "^3.0.2"
 
-"@types/relay-runtime@*":
+"@types/relay-runtime@*", "@types/relay-runtime@^10.1.7":
   version "10.1.7"
   resolved "https://registry.yarnpkg.com/@types/relay-runtime/-/relay-runtime-10.1.7.tgz#f9181e8bccf15080fce6e24af326e7ce0c7fe561"
   integrity sha512-Ib9kky44xN5ioYvAtX3lLoTvE0RUWQz5NPEvdogllviy6Mtkzsiz6M6Yi8Qw3WN0HObBvJdLCZeWasSzKjomxQ==
@@ -3920,6 +3920,11 @@ iferr@^0.1.5:
   resolved "https://registry.yarnpkg.com/iferr/-/iferr-0.1.5.tgz#c60eed69e6d8fdb6b3104a1fcbca1c192dc5b501"
   integrity sha1-xg7taebY/bazEEofy8ocGS3FtQE=
 
+immutable@^4.0.0-rc.12:
+  version "4.0.0-rc.12"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.0.0-rc.12.tgz#ca59a7e4c19ae8d9bf74a97bdf0f6e2f2a5d0217"
+  integrity sha512-0M2XxkZLx/mi3t8NVwIm1g8nHoEmM9p9UBl/G9k4+hm0kBgOVdMV/B3CY5dQ8qG8qc80NN4gDV4HQv6FTJ5q7A==
+
 immutable@~3.7.6:
   version "3.7.6"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.7.6.tgz#13b4d3cb12befa15482a26fe1b2ebae640071e4b"
@@ -4031,6 +4036,13 @@ inquirer@^7.0.0:
     string-width "^4.1.0"
     strip-ansi "^6.0.0"
     through "^2.3.6"
+
+invariant@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
+  integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
+  dependencies:
+    loose-envify "^1.0.0"
 
 invert-kv@^1.0.0:
   version "1.0.0"
@@ -6360,6 +6372,14 @@ registry-url@^5.0.0:
   integrity sha512-8acYXXTI0AkQv6RAOjE3vOaIXZkT9wo4LOFbBKYQEEnnMNBpKqdUrI6S4NT0KPIo/WVvJ5tE/X5LF/TQUf0ekw==
   dependencies:
     rc "^1.2.8"
+
+relay-compiler-language-typescript@^13.0.2:
+  version "13.0.2"
+  resolved "https://registry.yarnpkg.com/relay-compiler-language-typescript/-/relay-compiler-language-typescript-13.0.2.tgz#ef3bfe955a94cb140bdd77c92380aa211c0a5015"
+  integrity sha512-YbwTs7dW7FQcszTzPdxFLkb1jND+tlenYmGca4P0ybgiOCus8HpA7U1PRfIiFHxjwHntqjucmUDdJcSHjgGiGg==
+  dependencies:
+    immutable "^4.0.0-rc.12"
+    invariant "^2.2.4"
 
 relay-compiler@^9.0.0:
   version "9.1.0"

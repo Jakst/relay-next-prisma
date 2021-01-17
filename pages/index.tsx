@@ -30,6 +30,7 @@ export async function getStaticProps() {
 
   return {
     props: {
+      // @ts-expect-error QueryPayload is a union type of which only one type contains .json
       relayData: !relayData ? null : [[relayData[0], relayData[1].json]],
     },
   };
