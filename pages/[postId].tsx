@@ -25,12 +25,14 @@ const Index = ({ postId }) => {
 export const getServerSideProps: GetServerSideProps<
   any,
   { postId: string }
-> = async ({ params }) => {
+> = async ({ params, res }) => {
   const { environment, relaySSR } = initEnvironment();
 
   await fetchQuery(environment, query, { postId: params.postId });
 
   const relayData = (await relaySSR.getCache())?.[0];
+
+  res.setHeader("Cache-Control", "s-maxage=604800, stale-while-revalidate");
 
   return {
     props: {

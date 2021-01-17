@@ -23,12 +23,14 @@ const Index = () => {
   return <BlogPosts viewer={data.viewer} />;
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const { environment, relaySSR } = initEnvironment();
 
   await fetchQuery(environment, query, {});
 
   const relayData = (await relaySSR.getCache())?.[0];
+
+  res.setHeader("Cache-Control", "s-maxage=604800, stale-while-revalidate");
 
   return {
     props: {
