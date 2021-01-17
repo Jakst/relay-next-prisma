@@ -7,12 +7,12 @@
     "build": "next build",
     "start": "next start",
     "relay": "relay-compiler --src ./ --schema ./schema/schema.graphql --language typescript --artifactDirectory __generated__ --exclude '**/.next/**' '**/node_modules/**' '**/test/**'  '**/__generated__/**' '**/schema/**'",
-    "schema": "graphql get-schema -e dev"
+    "schema": "graphql codegen"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "graphql": "^14.6.0",
+    "graphql": "^15.4.0",
     "next": "latest",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -22,10 +22,12 @@
     "relay-hooks": "3.5.2"
   },
   "devDependencies": {
+    "@graphql-cli/codegen": "^1.17.17",
+    "@graphql-codegen/schema-ast": "^1.18.1",
     "@types/node": "^14.14.21",
     "@types/react-relay": "^7.0.17",
     "babel-plugin-relay": "^9.0.0",
-    "graphql-cli": "^3.0.11",
+    "graphql-cli": "^4.1.0",
     "prettier": "^2.2.1",
     "relay-compiler": "^9.0.0",
     "relay-compiler-language-typescript": "^13.0.2",

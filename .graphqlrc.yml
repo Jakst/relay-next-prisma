@@ -1,0 +1,7 @@
+schema: https://nextjs-graphql-with-prisma-relay.vercel.app/api
+extensions:
+  codegen:
+    generates:
+      ./schema/schema.graphql:
+        plugins:
+          - schema-ast
