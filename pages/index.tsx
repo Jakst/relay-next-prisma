@@ -2,6 +2,7 @@ import { graphql, fetchQuery } from "react-relay";
 import { useQuery } from "relay-hooks";
 import { initEnvironment } from "../lib/createEnvironment";
 import BlogPosts from "../components/BlogPosts";
+import { GetServerSideProps } from "next";
 
 const query = graphql`
   query pages_indexQuery {
@@ -21,7 +22,7 @@ const Index = ({ environment }) => {
   return <BlogPosts viewer={props.viewer} />;
 };
 
-export async function getStaticProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   const { environment, relaySSR } = initEnvironment();
 
   await fetchQuery(environment, query, {});
@@ -34,6 +35,6 @@ export async function getStaticProps() {
       relayData: !relayData ? null : [[relayData[0], relayData[1].json]],
     },
   };
-}
+};
 
 export default Index;
