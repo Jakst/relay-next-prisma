@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "relay": "relay-compiler --src ./ --schema ./schema/schema.graphql --language typescript --artifactDirectory __generated__ --exclude '**/.next/**' '**/node_modules/**' '**/test/**'  '**/__generated__/**' '**/schema/**'",
-    "schema": "graphql codegen"
+    "schema": "graphql codegen",
+    "prepnbuild": "yarn schema && yarn relay && yarn build"
   },
   "author": "",
   "license": "MIT",
