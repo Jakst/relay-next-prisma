@@ -3,6 +3,7 @@ import { useQuery } from "relay-hooks";
 import { initEnvironment } from "../lib/createEnvironment";
 import BlogPosts from "../components/BlogPosts";
 import { GetServerSideProps } from "next";
+import { pages_indexQuery } from "../__generated__/pages_indexQuery.graphql";
 
 const query = graphql`
   query pages_indexQuery {
@@ -12,14 +13,14 @@ const query = graphql`
   }
 `;
 
-const Index = ({ environment }) => {
-  const { error, props } = useQuery<any>(query);
+const Index = () => {
+  const { error, data } = useQuery<pages_indexQuery>(query);
 
   if (error) return <div>{error.message}</div>;
 
-  if (!props) return <div>Loading</div>;
+  if (!data) return <div>Loading</div>;
 
-  return <BlogPosts viewer={props.viewer} />;
+  return <BlogPosts viewer={data.viewer} />;
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
